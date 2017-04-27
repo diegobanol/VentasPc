@@ -34,7 +34,7 @@ def makeWebhookResult(req):
     parameters = result.get("parameters")
     productos = parameters.get("Productos")  #Cambiar por entity a recibir
     marca = parameters.get("Marca")
-    gama = parameters.get("Gama")
+    gama = parameters.get("gama")
 
     #cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
     
