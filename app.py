@@ -39,7 +39,7 @@ def makeWebhookResult(req):
     #cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
     
     if productos and marca and gama:
-        speech = "The cost of shipping to " + productos + " is " #+ str(cost[zone]) + " euros."
+        speech = "The cost of shipping to " + productos + " is http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png" #+ str(cost[zone]) + " euros."
     else:
         return {}
 
@@ -49,7 +49,7 @@ def makeWebhookResult(req):
     return {
         "speech": speech,
         "displayText": speech,
-        "data": {"image" : "http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png"},
+        # "data": {"image" : "http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png"},
         # "contextOut": [],
         "source": "apiai-onlinestore-shipping"
     }
