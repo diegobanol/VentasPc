@@ -40,6 +40,8 @@ def makeWebhookResult(req):
     
     if productos and marca and gama:
         speech = "The cost of shipping to " + productos + " is " #+ str(cost[zone]) + " euros."
+    else:
+        return {}
 
     print("Response:")
     print(speech)
