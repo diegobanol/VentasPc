@@ -55,11 +55,13 @@ def makeWebhookResult(req):
                     "type": "text",
                     "body": "Here's the picture of item " 
                 },
-                "attachment": {
-                    "type": "image",
-                     "payload": {
-                         "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
-                     }
+                {
+                    "attachment": {
+                        "type": "image",
+                         "payload": {
+                             "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+                         }
+                    }
                 }
             ]}
         },
