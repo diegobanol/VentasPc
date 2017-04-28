@@ -50,21 +50,41 @@ def makeWebhookResult(req):
         "speech": speech,
         "displayText": speech,
         "data": {
-            "facebook": {[
-                {
-                    "type": "text",
-                    "body": "Here's the picture of item " 
-                },
-                {
-                    "attachment": {
-                        "type": "image",
-                         "payload": {
-                             "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
-                         }
-                    }
+            "facebook": {
+         #       {
+         #           "type": "text",
+         #           "body": "Here's the picture of item " 
+         #       },
+         #       {
+         #           "attachment": {
+         #               "type": "image",
+         #                "payload": {
+         #                    "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+         #                }
+         #           }
+         #       }
+         #   ]}
+            
+                "message":{
+                    "text":"Pick a color:",
+                    "quick_replies":[
+                      {
+                        "content_type":"text",
+                        "title":"Red",
+                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
+                        "image_url":"https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+                      },
+                      {
+                        "content_type":"text",
+                        "title":"Green",
+                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
+                        "image_url":"https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+                      }
+                    ]
                 }
-            ]}
+            }
         },
+
         # "contextOut": [],
         "source": "apiai-onlinestore-shipping"
     }
