@@ -50,27 +50,20 @@ def makeWebhookResult(req):
         "speech": speech,
         "displayText": speech,
         "data": {
-            "facebook": {
-         #       {
-         #           "type": "text",
-         #           "body": "Here's the picture of item " 
-         #       },
-         #       {
-         #           "attachment": {
-         #               "type": "image",
-         #                "payload": {
-         #                    "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
-         #                }
-         #           }
-         #       }
-         #   ]}
-            
-                  #"message":{
-                "text":"Pick a color:"
-                  #}
-            }
+            "facebook": {[
+                {
+                    "text":"Pick a color:"
+                },
+                {
+                    "attachment": {
+                        "type": "image",
+                         "payload": {
+                             "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+                         }
+                    }
+                }
+            ]}
         },
-
         # "contextOut": [],
         "source": "apiai-onlinestore-shipping"
     }
