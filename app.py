@@ -53,7 +53,7 @@ def makeWebhookResult(req):
             "facebook": #{[
                 {
                     "text":"Pick a color:"
-                #}
+                }
                 #{
                 #    "attachment": {
                 #        "type": "image",
