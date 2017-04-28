@@ -50,10 +50,10 @@ def makeWebhookResult(req):
         "speech": speech,
         "displayText": speech,
         "data": {
-            "facebook": #{[
-                {
-                    "text":"Pick a color:"
-                }
+            "facebook":{ #{[
+                #{
+                #    "text":"Pick a color:"
+                #}
                 #{
                 #    "attachment": {
                 #        "type": "image",
@@ -63,6 +63,38 @@ def makeWebhookResult(req):
                 #    }
                 #}
             #]}
+            "attachment":{
+              "type":"template",
+              "payload":{
+                "template_type":"generic",
+                "elements":[
+                   {
+                    "title":"Welcome to Peter\'s Hats",
+                    "image_url":"https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg",
+                    "subtitle":"We\'ve got the right hat for everyone.",
+                    "default_action": {
+                      "type": "web_url",
+                      "url": "https://peterssendreceiveapp.ngrok.io/view?item=103",
+                      "messenger_extensions": true,
+                      "webview_height_ratio": "tall",
+                      "fallback_url": "https://peterssendreceiveapp.ngrok.io/"
+                    },
+                    "buttons":[
+                      {
+                        "type":"web_url",
+                        "url":"https://petersfancybrownhats.com",
+                        "title":"View Website"
+                      },{
+                        "type":"postback",
+                        "title":"Start Chatting",
+                        "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                      }              
+                    ]      
+                  }
+                ]
+              }
+            }
+          }  
         },
         # "contextOut": [],
         "source": "apiai-onlinestore-shipping"
