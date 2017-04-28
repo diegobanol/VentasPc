@@ -63,18 +63,27 @@ def makeWebhookResult(req):
                 #    }
                 #}
             #]}
-                "attachment": {
-                    "type": "template",
-                    "payload": {
-                        "template_type": "generic",
-                        "elements": {
-                            "title": "Welcome to Peter Hats",
-                            "image_url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg",
-                            "subtitle": "We ve got the right hat for everyone."
-                        }
-                    }
+		  "attachment": {
+		    "type": "template",
+		    "payload": {
+		      "template_type": "generic",
+		      "elements": [
+			{
+			  "title": "Rainbow Six Siege",
+			  "subtitle": "Blitz Guide",
+			  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
+			  "buttons": [
+			    {
+			      "type": "web_url",
+			      "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
+			      "title": "Watch video"
 			    }
-           }  
+			  ]
+			}
+		      ]
+		    }
+		  }
+           }
         },
         # "contextOut": [],
         "source": "apiai-onlinestore-shipping"
