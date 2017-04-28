@@ -51,11 +51,12 @@ def makeWebhookResult(req):
         "displayText": speech,
         "data": {
             "facebook": {
-             "attachment": {
-                "type": "image",
-                 "payload": {
-                     "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
-                 }
+                "attachment": {
+                    "type": "image",
+                     "payload": {
+                         "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+                     }
+                }
             }
         },
         # "contextOut": [],
