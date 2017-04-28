@@ -53,15 +53,15 @@ def makeWebhookResult(req):
             "facebook": {[
                 {
                     "text":"Pick a color:"
-                },
-                {
-                    "attachment": {
-                        "type": "image",
-                         "payload": {
-                             "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
-                         }
-                    }
                 }
+                #{
+                #    "attachment": {
+                #        "type": "image",
+                #         "payload": {
+                #             "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
+                #         }
+                #    }
+                #}
             ]}
         },
         # "contextOut": [],
