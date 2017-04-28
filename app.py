@@ -50,19 +50,7 @@ def makeWebhookResult(req):
         "speech": speech,
         "displayText": speech,
         "data": {
-            "facebook":{ #{[
-                #{
-                #    "text":"Pick a color:"
-                #}
-                #{
-                #    "attachment": {
-                #        "type": "image",
-                #         "payload": {
-                #             "url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
-                #         }
-                #    }
-                #}
-            #]}
+            "facebook":{
 		  "attachment": {
 		    "type": "template",
 		    "payload": {
