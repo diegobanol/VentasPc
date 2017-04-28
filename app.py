@@ -49,7 +49,7 @@ def makeWebhookResult(req):
     return {
         "speech": speech,
         "displayText": speech,
-        "data": {"facebook": {"http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png"}},
+        #"data": {"facebook": {"http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png"}},
         # "contextOut": [],
         "source": "apiai-onlinestore-shipping"
     }
