@@ -63,18 +63,17 @@ def makeWebhookResult(req):
                 #    }
                 #}
             #]}
-                "attachment":{
-                      "type":"template",
-                      "payload":{
-                            "template_type":"generic",
-                            "elements":
-                               {
-                                "title":"Welcome to Peter\'s Hats",
-                                "image_url":"https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg",
-                                "subtitle":"We\'ve got the right hat for everyone." 
-                              }
-                      }
-                }
+                "attachment": {
+                    "type": "template",
+                    "payload": {
+                        "template_type": "generic",
+                        "elements": {
+                            "title": "Welcome to Peter Hats",
+                            "image_url": "https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg",
+                            "subtitle": "We ve got the right hat for everyone."
+                        }
+                    }
+			    }
            }  
         },
         # "contextOut": [],
