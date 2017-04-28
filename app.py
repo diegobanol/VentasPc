@@ -65,23 +65,9 @@ def makeWebhookResult(req):
          #       }
          #   ]}
             
-                "message":{
-                    "text":"Pick a color:",
-                    "quick_replies":[
-                      {
-                        "content_type":"text",
-                        "title":"Red",
-                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED",
-                        "image_url":"https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
-                      },
-                      {
-                        "content_type":"text",
-                        "title":"Green",
-                        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN",
-                        "image_url":"https://www.testclan.com/images/testbot/siege/weapons/assault-rifles.jpg"
-                      }
-                    ]
-                }
+                  "message":{
+                    "text":"Pick a color:"
+                  }
             }
         },
 
