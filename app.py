@@ -65,9 +65,9 @@ def makeWebhookResult(req):
          #       }
          #   ]}
             
-                  "message":{
-                    "text":"Pick a color:"
-                  }
+                  #"message":{
+                "text":"Pick a color:"
+                  #}
             }
         },
 
