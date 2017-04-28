@@ -50,10 +50,10 @@ def makeWebhookResult(req):
         "speech": speech,
         "displayText": speech,
         "data": {
-            "facebook": {[
+            "facebook": #{[
                 {
                     "text":"Pick a color:"
-                }
+                #}
                 #{
                 #    "attachment": {
                 #        "type": "image",
@@ -62,7 +62,7 @@ def makeWebhookResult(req):
                 #         }
                 #    }
                 #}
-            ]}
+            #]}
         },
         # "contextOut": [],
         "source": "apiai-onlinestore-shipping"
