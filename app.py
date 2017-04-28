@@ -51,6 +51,7 @@ def makeWebhookResult(req):
         "displayText": speech,
         "data": {
             "facebook": {
+                "text": "message to send",
                 "attachment": {
                     "type": "image",
                      "payload": {
