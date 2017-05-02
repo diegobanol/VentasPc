@@ -68,7 +68,7 @@ def makeWebhookResult(req):
 			    }, {
 			      type: "postback",
 			      title: "Call Postback",
-			      payload: "Payload for second bubble",
+			      payload: "Payload for second bubble"
 			    }
 			  ]
 			}
