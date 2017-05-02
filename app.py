@@ -55,6 +55,7 @@ def makeWebhookResult(req):
     end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
     json_data = json.dumps(end)
 
+
     #cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
 
     if productos and marca and gama:
