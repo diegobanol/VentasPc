@@ -65,6 +65,10 @@ def makeWebhookResult(req):
 			      "type": "web_url",
 			      "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
 			      "title": "Watch video"
+			    }, {
+			      type: "postback",
+			      title: "Call Postback",
+			      payload: "Payload for second bubble",
 			    }
 			  ]
 			}
