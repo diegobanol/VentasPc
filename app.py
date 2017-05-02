@@ -94,7 +94,7 @@ def makeWebhookResult(req):
         #     # "contextOut": [],
         #     "source": "apiai-onlinestore-shipping"
         # }
-        return json_data
+        return end
     else:
         return {}
 
