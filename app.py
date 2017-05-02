@@ -35,63 +35,66 @@ def makeWebhookResult(req):
     productos = parameters.get("Productos")  #Cambiar por entity a recibir
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
+    data = {}
+    button = {}
+    facebook ={}
+    card = {}
+    payload = {}
+    attachment = {}
+    end = {}
+
+    button['boton1'] = {"type": "web_url","url": "https://www.youtube.com/watch?v=36q5NnL3uSM","title": "Watch video"}
+    button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
+    buttons= [button['boton1'], button['boton2']]
+    card['carta1'] = {"title": "Rainbow Six Siege", "subtitle": "Blitz Guide", "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg", "buttons": buttons}
+    elements = [card['carta1']]
+    payload = {"template_type": "generic", "elements" : elements}
+    attachment = {"type" : "template", "payload" : payload}
+    facebook["attachment"] = attachment
+    data["facebook"] = facebook
+    data["source"] = "apiai-onlinestore-shipping"
+    end = {"data" : data}
+    json_data = json.dumps(end)
 
     #cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
 
     if productos and marca and gama:
         #speech = "The cost of shipping to " #+ productos + " is http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png" #+ str(cost[zone]) + " euros."
-        return {
-            #"speech": speech,
-            #"displayText": speech,
-            "data": {
-                "facebook":{
-    		  "attachment": {
-    		    "type": "template",
-    		    "payload": {
-    		      "template_type": "generic",
-    		      "elements": [
-    			{
-    			  "title": "Rainbow Six Siege",
-    			  "subtitle": "Blitz Guide",
-    			  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
-    			  "buttons": [
-    			    {
-    			      "type": "web_url",
-    			      "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
-    			      "title": "Watch video"
-    			    },
-    			    {
-    			      "type": "postback",
-                  		      "title": "Hola",
-                  		      "payload": "Hola"
-    			    }
-    			  ]
-    			},
-    			{
-    			  "title": "Rainbow Six Siege",
-    			  "subtitle": "Blitz Guide",
-    			  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
-    			  "buttons": [
-    			    {
-    			      "type": "web_url",
-    			      "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
-    			      "title": "Watch video"
-    			    },
-    			    {
-    			      "type": "postback",
-                  		      "title": "Hola",
-                  		      "payload": "Hola"
-    			    }
-    			  ]
-    			}
-    		      ]
-    		    }
-    		  }
-               }
-            },
-            # "contextOut": [],
-            "source": "apiai-onlinestore-shipping"
-        }
+        # return {
+        #     #"speech": speech,
+        #     #"displayText": speech,
+        #     "data": {
+        #         "facebook":{
+    	# 	  "attachment": {
+    	# 	    "type": "template",
+    	# 	    "payload": {
+    	# 	      "template_type": "generic",
+    	# 	      "elements": [
+    	# 		{
+    	# 		  "title": "Rainbow Six Siege",
+    	# 		  "subtitle": "Blitz Guide",
+    	# 		  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
+    	# 		  "buttons": [
+    	# 		    {
+    	# 		      "type": "web_url",
+    	# 		      "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
+    	# 		      "title": "Watch video"
+    	# 		    },
+    	# 		    {
+    	# 		      "type": "postback",
+        #           		      "title": "Hola",
+        #           		      "payload": "Hola"
+    	# 		    }
+    	# 		  ]
+    	# 		}]
+    	# 	    }
+    	# 	  }
+        #        }
+        #     },
+        #     # "contextOut": [],
+        #     "source": "apiai-onlinestore-shipping"
+        # }
+        return json_data
     else:
         return {}
 
