@@ -52,8 +52,7 @@ def makeWebhookResult(req):
     attachment = {"type" : "template", "payload" : payload}
     facebook["attachment"] = attachment
     data["facebook"] = facebook
-    data["source"] = "apiai-onlinestore-shipping"
-    end = {"data" : data}
+    end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
     json_data = json.dumps(end)
 
     #cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
