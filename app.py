@@ -4,6 +4,8 @@ import urllib
 import json
 import os
 
+
+
 from flask import Flask
 from flask import request
 from flask import make_response
@@ -37,7 +39,7 @@ def makeWebhookResult(req):
     gama = parameters.get("gama")
 
     #cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
-    
+
     if productos and marca and gama:
         speech = "The cost of shipping to " #+ productos + " is http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png" #+ str(cost[zone]) + " euros."
     else:
