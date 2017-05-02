@@ -72,6 +72,23 @@ def makeWebhookResult(req):
               		      "payload": "Hola"
 			    }
 			  ]
+			},
+			{
+			  "title": "Rainbow Six Siege",
+			  "subtitle": "Blitz Guide",
+			  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
+			  "buttons": [
+			    {
+			      "type": "web_url",
+			      "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
+			      "title": "Watch video"
+			    },
+			    {
+			      "type": "postback",
+              		      "title": "Hola",
+              		      "payload": "Hola"
+			    }
+			  ]
 			}
 		      ]
 		    }
