@@ -30,7 +30,6 @@ def webhook():
 def makeWebhookResult(req):
     if req.get("result").get("action") != "asesorDeVentas": #Cambiar por action en el intent
         return {}
-	action = 0
     result = req.get("result")
     parameters = result.get("parameters")
     productos = parameters.get("Productos")  #Cambiar por entity a recibir
@@ -40,75 +39,65 @@ def makeWebhookResult(req):
     #cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
     
     if productos and marca and gama:
-        #speech = "The cost of shipping to " #+ productos + " is http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png" #+ str(cost[zone]) + " euros."
-    	action = 1
-		return {
-			"speech": speech,
-			"displayText": speech,
-			"data": {
-				"facebook":{
-			  "attachment": {
-				"type": "template",
-				"payload": {
-				  "template_type": "generic",
-				  "elements": [
-				{
-				  "title": "Rainbow Six Siege",
-				  "subtitle": "Blitz Guide",
-				  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
-				  "buttons": [
-					{
-					  "type": "web_url",
-					  "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
-					  "title": "Watch video"
-					},
-					{
-					  "type": "postback",
-							  "title": "Hola",
-							  "payload": "Hola"
-					}
-				  ]
-				},
-				{
-				  "title": "Rainbow Six Siege",
-				  "subtitle": "Blitz Guide",
-				  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
-				  "buttons": [
-					{
-					  "type": "web_url",
-					  "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
-					  "title": "Watch video"
-					},
-					{
-					  "type": "postback",
-							  "title": "Hola",
-							  "payload": "Hola"
-					}
-				  ]
-				}
-				  ]
-				}
-			  }
-			   }
+        speech = "The cost of shipping to " #+ productos + " is http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png" #+ str(cost[zone]) + " euros."
+    else:
+        return {}
+
+    print("Response:")
+    print(speech)
+
+    return {
+        "speech": speech,
+        "displayText": speech,
+        "data": {
+            "facebook":{
+		  "attachment": {
+		    "type": "template",
+		    "payload": {
+		      "template_type": "generic",
+		      "elements": [
+			{
+			  "title": "Rainbow Six Siege",
+			  "subtitle": "Blitz Guide",
+			  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
+			  "buttons": [
+			    {
+			      "type": "web_url",
+			      "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
+			      "title": "Watch video"
+			    },
+			    {
+			      "type": "postback",
+              		      "title": "Hola",
+              		      "payload": "Hola"
+			    }
+			  ]
 			},
-			# "contextOut": [],
-			"source": "apiai-onlinestore-shipping"
-		}
-	elif not(productos):
-		action = 2
-        	return {}
-	elif not(marca):
-		action = 3
-		return {}
-	elif not(gama):
-		action = 4
-		return {}
-	else:
-		return {}
-
-    #print("Response:")
-    #print(speech)
-
+			{
+			  "title": "Rainbow Six Siege",
+			  "subtitle": "Blitz Guide",
+			  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
+			  "buttons": [
+			    {
+			      "type": "web_url",
+			      "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
+			      "title": "Watch video"
+			    },
+			    {
+			      "type": "postback",
+              		      "title": "Hola",
+              		      "payload": "Hola"
+			    }
+			  ]
+			}
+		      ]
+		    }
+		  }
+           }
+        },
+        # "contextOut": [],
+        "source": "apiai-onlinestore-shipping"
+    }
 
 
 if __name__ == '__main__':
