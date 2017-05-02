@@ -42,7 +42,6 @@ def makeWebhookResult(req):
     if productos and marca and gama:
         #speech = "The cost of shipping to " #+ productos + " is http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png" #+ str(cost[zone]) + " euros."
     	action = 1
-		
 		return {
 			"speech": speech,
 			"displayText": speech,
@@ -97,11 +96,13 @@ def makeWebhookResult(req):
 		}
 	elif not(productos):
 		action = 2
-        return {}
+        	return {}
 	elif not(marca):
 		action = 3
+		return {}
 	elif not(gama):
 		action = 4
+		return {}
 	else:
 		return {}
 
