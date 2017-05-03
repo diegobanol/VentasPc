@@ -58,18 +58,34 @@ def makeWebhookResult(req):
         data["facebook"] = facebook
         end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
         return end
-    elif not(productos):
-        button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
-        button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
-        button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
-        button['boton4'] = {"type": "postback", "title": "tablets", "payload": "tablets" }
-        buttons= [button['boton1'], button['boton2'], button['boton3'], button['boton4']]
-        payload = {"template_type": "button", "text":"What do you want to do next?", "buttons" : buttons}
-        attachment = {"type" : "template", "payload" : payload}
-        facebook["attachment"] = attachment
-        data["facebook"] = facebook
-        end = {"data" : data}
-        return end
+    elif not(productos)
+        return {data: {
+            "facebook": {
+            "attachment": {
+            "type": "template",
+            "payload": {
+            "template_type": "button",
+            "text": "Are you looking for something to watch, or do you want to see more options? Type or tap below.",
+            "buttons": [
+            {
+            "type": "postback",
+            "title": "On Now",
+            "payload": "On Now"
+            },
+            {
+            "type": "postback",
+            "title": "On Later",
+            "payload": "On Later"
+            },
+            {
+            "type": "postback",
+            "title": "More Options",
+            "payload": "More Options"
+            }
+            ]
+            }
+            }
+            }}}
 #        return {}
 #    elif not(marca):
 #        return {}
