@@ -59,7 +59,20 @@ def makeWebhookResult(req):
         end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
         return end
     elif not(productos):
-        return {}
+        button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
+        button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
+        button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
+        button['boton4'] = {"type": "postback", "title": "tablets", "payload": "tablets" }
+        buttons= [button['boton1'], button['boton2'], button['boton3'], button['boton4']]
+        card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
+        elements = [card['carta1']]
+        payload = {"template_type": "generic", "elements" : elements}
+        attachment = {"type" : "template", "payload" : payload}
+        facebook["attachment"] = attachment
+        data["facebook"] = facebook
+        end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
+        json_data = json.dumps(end)
+        return end
     elif not(marca):
         return {}
     elif not(gama):
