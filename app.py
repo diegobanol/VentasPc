@@ -59,7 +59,7 @@ def makeWebhookResult(req):
         end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
         return end
     elif not(productos)
-        return {data: {
+        return {"data": {
             "facebook": {
             "attachment": {
             "type": "template",
