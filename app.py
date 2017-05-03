@@ -58,7 +58,7 @@ def makeWebhookResult(req):
         data["facebook"] = facebook
         end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
         return end
-    elif not(productos)
+    elif not(productos):
         return {}
 #        return {}
 #    elif not(marca):
