@@ -69,15 +69,15 @@ def makeWebhookResult(req):
         attachment = {"type" : "template", "payload" : payload}
         facebook["attachment"] = attachment
         data["facebook"] = facebook
-        end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
+        end = {"data" : data}
         json_data = json.dumps(end)
         return end
-    elif not(productos):
-        return {}
-    elif not(marca):
-        return {}
-    elif not(gama):
-        return {}
+#    elif not(productos):
+#        return {}
+#    elif not(marca):
+#        return {}
+#    elif not(gama):
+#        return {}
     else:
         return {}
 
