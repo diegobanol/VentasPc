@@ -35,19 +35,27 @@ def makeWebhookResult(req):
     productos = parameters.get("Productos")  #Cambiar por entity a recibir
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
-    data = button = facebook = card = payload = attachment = end = {}
+    data = {}
+    button = {}
+    facebook ={}
+    card = {}
+    payload = {}
+    attachment = {}
+    end = {}
+    elements =[]
 
-    button['boton1'] = {"type": "web_url","url": "https://www.youtube.com/watch?v=36q5NnL3uSM","title": "Watch video"}
-    button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
-    buttons= [button['boton1'], button['boton2']]
-    card['carta1'] = {"title": "Rainbow Six Siege", "subtitle": "Blitz Guide", "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg", "buttons": buttons}
-    elements = [card['carta1']]
+    for x in range(0, 4):
+        button['boton1'] = {"type": "web_url","url": "https://www.youtube.com/watch?v=36q5NnL3uSM","title": "Watch video"}
+        button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
+        buttons= [button['boton1'], button['boton2']]
+        card[x] = {"title": "Rainbow Six Siege", "subtitle": "Blitz Guide", "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg", "buttons": buttons}
+        #elements = [card['carta1']]
+        elements.append(card[x])
     payload = {"template_type": "generic", "elements" : elements}
     attachment = {"type" : "template", "payload" : payload}
     facebook["attachment"] = attachment
     data["facebook"] = facebook
     end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
-    json_data = json.dumps(end)
 
 
     #cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
