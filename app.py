@@ -35,18 +35,15 @@ def makeWebhookResult(req):
     productos = parameters.get("Productos")  #Cambiar por entity a recibir
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
-    data = {}
-    button = {}
-    facebook ={}
-    card = {}
-    payload = {}
-    attachment = {}
-    end = {}
-
-    button['boton1'] = {"type": "web_url","url": "https://www.youtube.com/watch?v=36q5NnL3uSM","title": "Watch video"}
+    data = button = facebook = card = payload = attachment = end = {}
+    title = "Rainbow Six Siege"
+    subtitle = "Blitz Guide"
+    image_url = "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg"
+    url="https://www.youtube.com/watch?v=36q5NnL3uSM"
+    button['boton1'] = {"type": "web_url","url": url,"title": "Watch video"}
     button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
     buttons= [button['boton1'], button['boton2']]
-    card['carta1'] = {"title": "Rainbow Six Siege", "subtitle": "Blitz Guide", "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg", "buttons": buttons}
+    card['carta1'] = {"title": title, "subtitle": subtitle, "image_url": image_url, "buttons": buttons}
     elements = [card['carta1']]
     payload = {"template_type": "generic", "elements" : elements}
     attachment = {"type" : "template", "payload" : payload}
