@@ -32,18 +32,9 @@ def makeWebhookResult(req):
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    try:
-        productos = parameters.get("Productos")
-    except ValueError:
-        productos = None
-    try:
-        marca = parameters.get("Marca")
-    except ValueError:
-        marca = None
-    try:
-        gama = parameters.get("gama")
-    except ValueError:
-        gama = None
+    productos = parameters.get("Productos")
+    marca = parameters.get("Marca")
+    gama = parameters.get("gama")
     data = {}
     button = {}
     facebook ={}
@@ -66,7 +57,7 @@ def makeWebhookResult(req):
         facebook["attachment"] = attachment
         data["facebook"] = facebook
         end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
-        return end
+        #return end
         # return {"data": {
         #     "facebook": {
         #     "attachment": {
@@ -105,8 +96,6 @@ def makeWebhookResult(req):
         # facebook["attachment"] = attachment
         # data["facebook"] = facebook
         # end = {"data" : data}
-
-        return end
     elif not productos:
         button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
         button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
@@ -119,19 +108,19 @@ def makeWebhookResult(req):
         facebook["attachment"] = attachment
         data["facebook"] = facebook
         end = {"data" : data}
-        return end
+        #return end
 #        return {}
 #    elif not(marca):
 #        return {}
 #    elif not(gama):
 #        return {}
-    else:
-        return {}
+    #else:
+    #    return {}
 
     print("Response:")
     print(speech)
 
-    return{}
+    return end
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
