@@ -110,7 +110,7 @@ def makeWebhookResult(req):
         facebook["attachment"] = attachment
         data["facebook"] = facebook
         end = {"data" : data}
-        return {}
+        return end
 #        return {}
 #    elif not(marca):
 #        return {}
