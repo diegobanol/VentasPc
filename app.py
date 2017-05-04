@@ -61,6 +61,14 @@ def makeWebhookResult(req):
     if not gama:
         end = createButtons( "baja", "media", "alta" )
     if productos and marca and gama:
+        data = {}
+        button = {}
+        facebook ={}
+        card = {}
+        payload = {}
+        attachment = {}
+        end = {}
+        elements =[]
         for x in range(0, 4):
             button['boton1'] = {"type": "web_url","url": "https://www.youtube.com/watch?v=36q5NnL3uSM","title": "Watch video"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
