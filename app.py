@@ -79,8 +79,6 @@ def makeWebhookResult(req):
         facebook["attachment"] = attachment
         data["facebook"] = facebook
         end = {"data" : data}
-
-
     if productos and marca and gama:
         for x in range(0, 4):
             button['boton1'] = {"type": "web_url","url": "https://www.youtube.com/watch?v=36q5NnL3uSM","title": "Watch video"}
@@ -134,29 +132,6 @@ def makeWebhookResult(req):
         # facebook["attachment"] = attachment
         # data["facebook"] = facebook
         # end = {"data" : data}
-    elif not productos:
-        button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
-        button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
-        button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
-        buttons= [button['boton1'], button['boton2'], button['boton3']]
-        card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
-        elements = [card['carta1']]
-        payload = {"template_type": "generic", "elements" : elements}
-        attachment = {"type" : "template", "payload" : payload}
-        facebook["attachment"] = attachment
-        data["facebook"] = facebook
-        end = {"data" : data}
-        #return end
-        #return {}
-#    elif not(marca):
-#        return {}
-#    elif not(gama):
-#        return {}
-    else:
-        end = {}
-
-    #print("Response:")
-    #print(speech)
 
     return end
 
