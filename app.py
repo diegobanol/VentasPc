@@ -43,6 +43,43 @@ def makeWebhookResult(req):
     attachment = {}
     end = {}
     elements =[]
+    if not productos:
+        button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
+        button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
+        button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
+        buttons= [button['boton1'], button['boton2'], button['boton3']]
+        card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
+        elements = [card['carta1']]
+        payload = {"template_type": "generic", "elements" : elements}
+        attachment = {"type" : "template", "payload" : payload}
+        facebook["attachment"] = attachment
+        data["facebook"] = facebook
+        end = {"data" : data}
+    if not marca:
+        button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
+        button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
+        button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
+        buttons= [button['boton1'], button['boton2'], button['boton3']]
+        card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
+        elements = [card['carta1']]
+        payload = {"template_type": "generic", "elements" : elements}
+        attachment = {"type" : "template", "payload" : payload}
+        facebook["attachment"] = attachment
+        data["facebook"] = facebook
+        end = {"data" : data}
+    if not gama:
+        button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
+        button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
+        button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
+        buttons= [button['boton1'], button['boton2'], button['boton3']]
+        card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
+        elements = [card['carta1']]
+        payload = {"template_type": "generic", "elements" : elements}
+        attachment = {"type" : "template", "payload" : payload}
+        facebook["attachment"] = attachment
+        data["facebook"] = facebook
+        end = {"data" : data}
+
 
     if productos and marca and gama:
         # for x in range(0, 4):
@@ -58,17 +95,7 @@ def makeWebhookResult(req):
         # data["facebook"] = facebook
         # end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
         #return end
-        button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
-        button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
-        button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
-        buttons= [button['boton1'], button['boton2'], button['boton3']]
-        card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
-        elements = [card['carta1']]
-        payload = {"template_type": "generic", "elements" : elements}
-        attachment = {"type" : "template", "payload" : payload}
-        facebook["attachment"] = attachment
-        data["facebook"] = facebook
-        end = {"data" : data}
+
         # return {"data": {
         #     "facebook": {
         #     "attachment": {
