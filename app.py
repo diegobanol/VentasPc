@@ -73,7 +73,7 @@ def makeWebhookResult(req):
             button['boton1'] = {"type": "web_url","url": "https://www.youtube.com/watch?v=36q5NnL3uSM","title": "Watch video"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
             buttons= [button['boton1'], button['boton2']]
-            card[x] = {"title": "Rainbow Six Siege", "subtitle": "Blitz Guide", "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg", "buttons": buttons}
+            card[x] = {"title": "Rainbow Six Siege", "subtitle": "Blitz Guide", "image_url": "https://http2.mlstatic.com/portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-D_NQ_NP_395915-MCO25330287897_022017-O.webp", "buttons": buttons}
             #elements = [card['carta1']]
             elements.append(card[x])
         payload = {"template_type": "generic", "elements" : elements}
