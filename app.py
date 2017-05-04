@@ -12,6 +12,14 @@ from flask import make_response
 app = Flask(__name__)
 
 def createButtons( option1, option2, option3 ):
+    data = {}
+    button = {}
+    facebook ={}
+    card = {}
+    payload = {}
+    attachment = {}
+    end = {}
+    elements =[]
     button['boton1'] = {"type": "postback", "title": option1, "payload": option1}
     button['boton2'] = {"type": "postback", "title": option2, "payload": option2}
     button['boton3'] = {"type": "postback", "title": option3, "payload": option3}
@@ -46,14 +54,6 @@ def makeWebhookResult(req):
     productos = parameters.get("Productos")
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
-    data = {}
-    button = {}
-    facebook ={}
-    card = {}
-    payload = {}
-    attachment = {}
-    end = {}
-    elements =[]
     if not productos:
         end = createButtons( "portatiles", "celulares", "tablets" )
     if not marca:
