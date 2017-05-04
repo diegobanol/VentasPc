@@ -11,7 +11,7 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
-def createButtons( option1, option2, option3 ):
+def createButtons(text, option1, option2, option3 ):
     data = {}
     button = {}
     facebook ={}
@@ -24,7 +24,7 @@ def createButtons( option1, option2, option3 ):
     button['boton2'] = {"type": "postback", "title": option2, "payload": option2}
     button['boton3'] = {"type": "postback", "title": option3, "payload": option3}
     buttons= [button['boton1'], button['boton2'], button['boton3']]
-    payload = {"template_type": "button", "text":"What do you want to do next?", "buttons" : buttons}
+    payload = {"template_type": "button", "text": text, "buttons" : buttons}
     attachment = {"type" : "template", "payload" : payload}
     facebook["attachment"] = attachment
     data["facebook"] = facebook
@@ -55,11 +55,11 @@ def makeWebhookResult(req):
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
     if not productos:
-        end = createButtons( "portatiles", "celulares", "tablets" )
+        end = createButtons("En que clase de producto esta interesado?", "portatiles", "celulares", "tablets" )
     elif not marca:
-        end = createButtons( "lenovo", "asus", "samsung" )
+        end = createButtons("Cual marca le llama la atencion", "lenovo", "asus", "samsung" )
     elif not gama:
-        end = createButtons( "baja", "media", "alta" )
+        end = createButtons("De cual gama quiere su producto", "baja", "media", "alta" )
     elif productos and marca and gama:
         data = {}
         button = {}
