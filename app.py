@@ -57,7 +57,7 @@ def makeWebhookResult(req):
         facebook["attachment"] = attachment
         data["facebook"] = facebook
         end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
-        return end
+        #return end
         # return {"data": {
         #     "facebook": {
         #     "attachment": {
@@ -109,13 +109,13 @@ def makeWebhookResult(req):
         data["facebook"] = facebook
         end = {"data" : data}
         #return end
-        return {}
+        #return {}
 #    elif not(marca):
 #        return {}
 #    elif not(gama):
 #        return {}
     else:
-        return {}
+        end = {}
 
     print("Response:")
     print(speech)
