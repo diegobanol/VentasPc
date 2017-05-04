@@ -107,7 +107,7 @@ def makeWebhookResult(req):
         # end = {"data" : data}
 
         return end
-    elif not(productos):
+    elif not productos:
         button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
         button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
         button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
