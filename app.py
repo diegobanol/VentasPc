@@ -32,9 +32,18 @@ def makeWebhookResult(req):
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    productos = parameters.get("Productos")  #Cambiar por entity a recibir
-    marca = parameters.get("Marca")
-    gama = parameters.get("gama")
+    try:
+        productos = parameters.get("Productos")
+    except ValueError:
+        productos = None
+    try:
+        marca = parameters.get("Marca")
+    except ValueError:
+        marca = None
+    try:
+        gama = parameters.get("gama")
+    except ValueError:
+        gama = None
     data = {}
     button = {}
     facebook ={}
