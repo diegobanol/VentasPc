@@ -117,8 +117,8 @@ def makeWebhookResult(req):
     else:
         end = {}
 
-    print("Response:")
-    print(speech)
+    #print("Response:")
+    #print(speech)
 
     return end
 
