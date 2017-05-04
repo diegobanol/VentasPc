@@ -85,14 +85,24 @@ def makeWebhookResult(req):
         #     }
         #     }
         #     }}}
+        # button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
+        # button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
+        # button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
+        # buttons= [button['boton1'], button['boton2'], button['boton3']]
+        # #card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
+        # #elements = [card['carta1']]
+        # payload = {"template_type": "button", "text": "Are you looking for.", "buttons": buttons}
+        # attachment = {"type" : "template", "payload" : payload}
+        # facebook["attachment"] = attachment
+        # data["facebook"] = facebook
+        # end = {"data" : data}
         button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
         button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
         button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
-        button['boton4'] = {"type": "postback", "title": "tablets", "payload": "tablets" }
-        buttons= [button['boton1'], button['boton2'], button['boton3'], button['boton4']]
-        #card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
-        #elements = [card['carta1']]
-        payload = {"template_type": "button", "text": "Are you looking for.", "buttons": buttons}
+        buttons= [button['boton1'], button['boton2'], button['boton3']]
+        card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
+        elements = [card['carta1']]
+        payload = {"template_type": "generic", "elements" : elements}
         attachment = {"type" : "template", "payload" : payload}
         facebook["attachment"] = attachment
         data["facebook"] = facebook
