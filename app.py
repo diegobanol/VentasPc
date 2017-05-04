@@ -56,11 +56,11 @@ def makeWebhookResult(req):
     gama = parameters.get("gama")
     if not productos:
         end = createButtons( "portatiles", "celulares", "tablets" )
-    if not marca:
+    elif not marca:
         end = createButtons( "lenovo", "asus", "samsung" )
-    if not gama:
+    elif not gama:
         end = createButtons( "baja", "media", "alta" )
-    if productos and marca and gama:
+    elif productos and marca and gama:
         data = {}
         button = {}
         facebook ={}
