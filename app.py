@@ -11,7 +11,7 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
-def createButtons(text, option1, option2, option3 ):
+def createButtons(speech, text, option1, option2, option3 ):
     data = {}
     button = {}
     facebook ={}
@@ -28,7 +28,7 @@ def createButtons(text, option1, option2, option3 ):
     attachment = {"type" : "template", "payload" : payload}
     facebook["attachment"] = attachment
     data["facebook"] = facebook
-    end = {"speech": "Barack Hussein Obama", "displayText": "Barack Hussein Obama","data" : data}
+    end = {"speech": speech, "speech": speech,"data" : data}
 
     return end
 
@@ -56,11 +56,11 @@ def makeWebhookResult(req):
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
     if not productos:
-        end = createButtons("En que clase de producto esta interesado?", "portatiles", "celulares", "tablets" )
+        end = createButtons("En que clase de producto esta interesado?, hay porttiles, celulares, y tablets","En que clase de producto esta interesado?", "portatiles", "celulares", "tablets" )
     elif not marca:
-        end = createButtons("Cual marca le llama la atencion", "lenovo", "asus", "samsung" )
+        end = createButtons("Cual marca le llama la atencion? hay lenovo, asus, samsung.","Cual marca le llama la atencion?", "lenovo", "asus", "samsung" )
     elif not gama:
-        end = createButtons("De cual gama quiere su producto", "baja", "media", "alta" )
+        end = createButtons("De cual gama quiere su producto: baja, media, alta", "baja", "media", "alta" )
     elif productos and marca and gama:
         data = {}
         button = {}
