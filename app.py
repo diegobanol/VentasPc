@@ -28,7 +28,8 @@ def createButtons(text, option1, option2, option3 ):
     attachment = {"type" : "template", "payload" : payload}
     facebook["attachment"] = attachment
     data["facebook"] = facebook
-    end = {"data" : data}
+    end = {"speech": "Barack Hussein Obama", "displayText": "Barack Hussein Obama","data" : data}
+
     return end
 
 @app.route('/webhook', methods=['POST'])
