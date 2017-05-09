@@ -30,7 +30,7 @@ def createButtons(speech, text, option1, option2, option3 ):
     attachment = {"type" : "template", "payload" : payload}
     facebook["attachment"] = attachment
     data["facebook"] = facebook
-    end = {"speech": speech, "speech": speech,"data" : data}
+    end = {"speech": speech, "data" : data}
 
     return end
 
