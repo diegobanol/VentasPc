@@ -71,6 +71,32 @@ def makeWebhookResult(req):
         end = {}
         elements =[]
 
+        uri = "https://api.mercadolibre.com/sites/MCO/search?q=celular%20lenovo&price=200000-500000&limit=9"
+        try:
+            uResponse = requests.get(uri)
+        except requests.ConnectionError:
+           return "Connection Error"
+        Jresponse = uResponse.text
+        dataR = json.loads(Jresponse)
+
+        displayName = dataR['results'][0]['title']
+        price = str(dataR['results'][0]['price'])
+        image = str(dataR['results'][0]['thumbnail'])
+        link = str(dataR['results'][0]['permalink'])
+
+        uri = "https://api.mercadolibre.com/sites/MCO/search?q=celular%20lenovo&price=200000-500000&limit=9"
+        try:
+            uResponse = requests.get(uri)
+        except requests.ConnectionError:
+           return "Connection Error"
+        Jresponse = uResponse.text
+        dataR = json.loads(Jresponse)
+
+        displayName = dataR['results'][0]['title']
+        price = str(dataR['results'][0]['price'])
+        image = str(dataR['results'][0]['thumbnail'])
+        link = str(dataR['results'][0]['permalink'])
+
         for x in range(0, 4):
             button['boton1'] = {"type": "web_url","url": "http://articulo.mercadolibre.com.co/MCO-438399752-portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-_JM","title": "Ver Producto"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
@@ -170,4 +196,4 @@ if __name__ == '__main__':
         #     },
         #     # "contextOut": [],
         #     "source": "apiai-onlinestore-shipping"
-        # } 
+        # }
