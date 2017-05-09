@@ -63,7 +63,7 @@ def makeWebhookResult(req):
     elif not marca:
         end = createButtons("Cual marca le llama la atencion? hay lenovo, asus, samsung.","Cual marca le llama la atencion?", "lenovo", "asus", "samsung" )
     elif not gama:
-        end = createButtons("De cual gama quiere su producto: baja, media, alta", "baja", "media", "alta" )
+        end = createButtons("De cual gama quiere su producto: baja, media, alta", "De cual gama quiere su producto?", "baja", "media", "alta" )
     elif productos and marca and gama:
         data = {}
         button = {}
