@@ -102,7 +102,7 @@ def makeWebhookResult(req):
         attachment = {"type" : "template", "payload" : payload}
         facebook["attachment"] = attachment
         data["facebook"] = facebook
-        end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
+        end = {"speech": "soy yo", "data" : data, "source" : "apiai-onlinestore-shipping"}
 
     return end
 
