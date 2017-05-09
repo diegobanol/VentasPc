@@ -86,7 +86,7 @@ def makeWebhookResult(req):
         link = dataR['results'][0]['permalink']
 
         for x in range(0, 4):
-            button['boton1'] = {"type": "web_url","url": link,"title": "Ver Producto"}
+            button['boton1'] = {"type": "web_url", "url": link, "title": "Ver Producto"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
             buttons= [button['boton1'], button['boton2']]
             card[x] = {"title": displayName, "subtitle": price, "image_url": image, "buttons": buttons}
