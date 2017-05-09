@@ -78,7 +78,7 @@ def makeWebhookResult(req):
             priceRange = "400000-700000"
         elif gama == "media":
             priceRange = "700001-1500000"
-        else:
+        elif gama == "alta":
             priceRange = "1500001-10500000"
 
         #Peticion GET
