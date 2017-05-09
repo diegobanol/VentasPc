@@ -55,26 +55,12 @@ def makeWebhookResult(req):
     productos = parameters.get("Productos")
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
-
-    uri = "https://api.mercadolibre.com/sites/MCO/search?q=celular%20lenovo&price=200000-500000&limit=9"
-
-    try:
-        uResponse = requests.get(uri)
-    except requests.ConnectionError:
-       return "Connection Error"
-    Jresponse = uResponse.text
-    dataR = json.loads(Jresponse)
-    displayName = dataR['results'][0]['title']
-    price = dataR['results'][0]['price']
-    image = dataR['results'][0]['thumbnail']
-    link = dataR['results'][0]['permalink']
-
     if not productos:
         end = createButtons("En que clase de producto esta interesado?, hay porttiles, celulares, y tablets","En que clase de producto esta interesado?", "portatiles", "celulares", "tablets" )
     elif not marca:
         end = createButtons("Cual marca le llama la atencion? hay lenovo, asus, samsung.","Cual marca le llama la atencion?", "lenovo", "asus", "samsung" )
     elif not gama:
-        end = createButtons("De cual gama quiere su producto: baja, media, alta","De cual gama quiere su producto?", "baja", "media", "alta" )
+        end = createButtons("De cual gama quiere su producto: baja, media, alta", "baja", "media", "alta" )
     elif productos and marca and gama:
         data = {}
         button = {}
@@ -86,10 +72,10 @@ def makeWebhookResult(req):
         elements =[]
 
         for x in range(0, 4):
-            button['boton1'] = {"type": "web_url", "url": "https://www.google.com.co/", "title": "Ver Producto"}
+            button['boton1'] = {"type": "web_url","url": "http://articulo.mercadolibre.com.co/MCO-438399752-portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-_JM","title": "Ver Producto"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
             buttons= [button['boton1'], button['boton2']]
-            card[x] = {"title": "ayuda", "subtitle": "price", "image_url": "http://concepto.de/wp-content/uploads/2014/12/URL.jpg", "buttons": buttons}
+            card[x] = {"title": "Portatil Lenovo Ideapad 510 Core I7 4gb 1tb Video 2gb W10 ", "subtitle": "2.459.900", "image_url": "https://http2.mlstatic.com/portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-D_NQ_NP_395915-MCO25330287897_022017-O.webp", "buttons": buttons}
             #elements = [card['carta1']]
             elements.append(card[x])
         payload = {"template_type": "generic", "elements" : elements}
@@ -184,4 +170,4 @@ if __name__ == '__main__':
         #     },
         #     # "contextOut": [],
         #     "source": "apiai-onlinestore-shipping"
-        # }
+        # } 
