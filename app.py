@@ -91,7 +91,7 @@ def makeWebhookResult(req):
             button['boton1'] = {"type": "web_url","url": "http://articulo.mercadolibre.com.co/MCO-438399752-portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-_JM","title": "Ver Producto"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
             buttons= [button['boton1'], button['boton2']]
-            card[x] = {"title": "Portatil Lenovo Ideapad 510 Core I7 4gb 1tb Video 2gb W10 ", "subtitle": "2.459.900", "image_url": "https://http2.mlstatic.com/portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-D_NQ_NP_395915-MCO25330287897_022017-O.webp", "buttons": buttons}
+            card[x] = {"title": displayName, "subtitle": "2.459.900", "image_url": "https://http2.mlstatic.com/portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-D_NQ_NP_395915-MCO25330287897_022017-O.webp", "buttons": buttons}
             #elements = [card['carta1']]
             elements.append(card[x])
         payload = {"template_type": "generic", "elements" : elements}
