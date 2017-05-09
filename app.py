@@ -55,6 +55,20 @@ def makeWebhookResult(req):
     productos = parameters.get("Productos")
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
+
+    uri = "https://api.mercadolibre.com/sites/MCO/search?q=celular%20lenovo&price=200000-500000&limit=9"
+    try:
+        uResponse = requests.get(uri)
+    except requests.ConnectionError:
+       return "Connection Error"
+    Jresponse = uResponse.text
+    dataR = json.loads(Jresponse)
+
+    displayName = dataR['results'][0]['title']
+    price = str(dataR['results'][0]['price'])
+    image = str(dataR['results'][0]['thumbnail'])
+    link = str(dataR['results'][0]['permalink'])
+
     if not productos:
         end = createButtons("En que clase de producto esta interesado?, hay porttiles, celulares, y tablets","En que clase de producto esta interesado?", "portatiles", "celulares", "tablets" )
     elif not marca:
@@ -70,32 +84,6 @@ def makeWebhookResult(req):
         attachment = {}
         end = {}
         elements =[]
-
-        uri = "https://api.mercadolibre.com/sites/MCO/search?q=celular%20lenovo&price=200000-500000&limit=9"
-        try:
-            uResponse = requests.get(uri)
-        except requests.ConnectionError:
-           return "Connection Error"
-        Jresponse = uResponse.text
-        dataR = json.loads(Jresponse)
-
-        displayName = dataR['results'][0]['title']
-        price = str(dataR['results'][0]['price'])
-        image = str(dataR['results'][0]['thumbnail'])
-        link = str(dataR['results'][0]['permalink'])
-
-        uri = "https://api.mercadolibre.com/sites/MCO/search?q=celular%20lenovo&price=200000-500000&limit=9"
-        try:
-            uResponse = requests.get(uri)
-        except requests.ConnectionError:
-           #return "Connection Error"
-        Jresponse = uResponse.text
-        dataR = json.loads(Jresponse)
-
-        displayName = dataR['results'][0]['title']
-        price = str(dataR['results'][0]['price'])
-        image = str(dataR['results'][0]['thumbnail'])
-        link = str(dataR['results'][0]['permalink'])
 
         for x in range(0, 4):
             button['boton1'] = {"type": "web_url","url": "http://articulo.mercadolibre.com.co/MCO-438399752-portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-_JM","title": "Ver Producto"}
