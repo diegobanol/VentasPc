@@ -78,12 +78,12 @@ def makeWebhookResult(req):
         except requests.ConnectionError:
            return "Connection Error"
         Jresponse = uResponse.text
-        data = json.loads(Jresponse)
+        dataR = json.loads(Jresponse)
 
-        displayName = data['results'][0]['title']
-        price = data['results'][0]['price']
-        image = data['results'][0]['thumbnail']
-        link = data['results'][0]['permalink']
+        displayName = dataR['results'][0]['title']
+        price = dataR['results'][0]['price']
+        image = dataR['results'][0]['thumbnail']
+        link = dataR['results'][0]['permalink']
 
         for x in range(0, 4):
             button['boton1'] = {"type": "web_url","url": link,"title": "Ver Producto"}
