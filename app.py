@@ -30,7 +30,7 @@ def createButtons(speech, text, option1, option2, option3 ):
     attachment = {"type" : "template", "payload" : payload}
     facebook["attachment"] = attachment
     data["facebook"] = facebook
-    end = {"speech": speech, "text": speech,"data" : data}
+    end = {"speech": speech, "speech": speech,"data" : data}
 
     return end
 
@@ -63,7 +63,7 @@ def makeWebhookResult(req):
     elif not marca:
         end = createButtons("Cual marca le llama la atencion? hay lenovo, asus, samsung.","Cual marca le llama la atencion?", "lenovo", "asus", "samsung" )
     elif not gama:
-        end = createButtons("De cual gama quiere su producto?: baja, media, alta", "De cual gama quiere su producto?", "baja", "media", "alta" )
+        end = createButtons("De cual gama quiere su producto: baja, media, alta", "baja", "media", "alta" )
     elif productos and marca and gama:
         data = {}
         button = {}
@@ -102,8 +102,7 @@ def makeWebhookResult(req):
         attachment = {"type" : "template", "payload" : payload}
         facebook["attachment"] = attachment
         data["facebook"] = facebook
-        #speech = "Su " + productos + " " + marca + " de gama " + gama + " es " + dataR['results'][x]['title'] + " de precio " + dataR['results'][x]['price'] + " " + dataR['results'][x]['permalink']
-        end = {data, "source" : "apiai-onlinestore-shipping"}
+        end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
 
     return end
 
@@ -112,4 +111,4 @@ if __name__ == '__main__':
 
     print "Starting app on port %d" % port
 
-    app.run(debug=True, port=port, host='0.0.0.0')
+app.run(debug=True, port=port, host='0.0.0.0')
