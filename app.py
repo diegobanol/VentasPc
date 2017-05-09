@@ -86,10 +86,10 @@ def makeWebhookResult(req):
         elements =[]
 
         for x in range(0, 4):
-            button['boton1'] = {"type": "web_url", "url": link, "title": "Ver Producto"}
+            button['boton1'] = {"type": "web_url", "url": "https://www.google.com.co/", "title": "Ver Producto"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
             buttons= [button['boton1'], button['boton2']]
-            card[x] = {"title": displayName, "subtitle": price, "image_url": image, "buttons": buttons}
+            card[x] = {"title": "ayuda", "subtitle": "price", "image_url": "http://concepto.de/wp-content/uploads/2014/12/URL.jpg", "buttons": buttons}
             #elements = [card['carta1']]
             elements.append(card[x])
         payload = {"template_type": "generic", "elements" : elements}
