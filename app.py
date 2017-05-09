@@ -4,6 +4,8 @@ import urllib
 import json
 import os
 
+import requests
+
 from flask import Flask
 from flask import request
 from flask import make_response
@@ -55,6 +57,19 @@ def makeWebhookResult(req):
     productos = parameters.get("Productos")
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
+
+    uri = "https://api.mercadolibre.com/sites/MCO/search?q=celular%20lenovo&price=200000-500000&limit=9"
+    try:
+        uResponse = requests.get(uri)
+    except requests.ConnectionError:
+       return "Connection Error"
+    Jresponse = uResponse.text
+    dataR = json.loads(Jresponse)
+
+    displayName = dataR['results'][0]['title']
+    price = str(dataR['results'][0]['price'])
+    image = str(dataR['results'][0]['thumbnail'])
+    link = str(dataR['results'][0]['permalink'])
 
     if not productos:
         end = createButtons("En que clase de producto esta interesado?, hay porttiles, celulares, y tablets","En que clase de producto esta interesado?", "portatiles", "celulares", "tablets" )
