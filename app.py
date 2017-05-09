@@ -74,16 +74,23 @@ def makeWebhookResult(req):
         end = {}
         elements =[]
 
-        for x in range(0, 9):
+        if gama == "baja":
+            priceRange = "400000-700000"
+        elif gama == "media":
+            priceRange = "700001-1500000"
+        else:
+            priceRange = "1500001-10500000"
 
-            #Peticion GET
-            uri = "https://api.mercadolibre.com/sites/MCO/search?q=" + productos + " " + marca + "&price=200000-500000&limit=9"
-            try:
-                uResponse = requests.get(uri)
-            except requests.ConnectionError:
-               return "Connection Error"
-            Jresponse = uResponse.text
-            dataR = json.loads(Jresponse)
+        #Peticion GET
+        uri = "https://api.mercadolibre.com/sites/MCO/search?q=" + productos + " " + marca + "&price=" + priceRange + "&limit=9"
+        try:
+            uResponse = requests.get(uri)
+        except requests.ConnectionError:
+           return "Connection Error"
+        Jresponse = uResponse.text
+        dataR = json.loads(Jresponse)
+
+        for x in range(0, 9):
 
             button['boton1'] = {"type": "web_url","url": dataR['results'][x]['permalink'],"title": "Ver Producto"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
