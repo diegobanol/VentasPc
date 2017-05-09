@@ -88,7 +88,7 @@ def makeWebhookResult(req):
         try:
             uResponse = requests.get(uri)
         except requests.ConnectionError:
-           return "Connection Error"
+           #return "Connection Error"
         Jresponse = uResponse.text
         dataR = json.loads(Jresponse)
 
