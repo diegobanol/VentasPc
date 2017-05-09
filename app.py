@@ -58,19 +58,6 @@ def makeWebhookResult(req):
     marca = parameters.get("Marca")
     gama = parameters.get("gama")
 
-    uri = "https://api.mercadolibre.com/sites/MCO/search?q=celular%20lenovo&price=200000-500000&limit=9"
-    try:
-        uResponse = requests.get(uri)
-    except requests.ConnectionError:
-       return "Connection Error"
-    Jresponse = uResponse.text
-    dataR = json.loads(Jresponse)
-
-    displayName = dataR['results'][0]['title']
-    price = str(dataR['results'][0]['price'])
-    image = str(dataR['results'][0]['thumbnail'])
-    link = str(dataR['results'][0]['permalink'])
-
     if not productos:
         end = createButtons("En que clase de producto esta interesado?, hay porttiles, celulares, y tablets","En que clase de producto esta interesado?", "portatiles", "celulares", "tablets" )
     elif not marca:
@@ -87,11 +74,27 @@ def makeWebhookResult(req):
         end = {}
         elements =[]
 
-        for x in range(0, 4):
-            button['boton1'] = {"type": "web_url","url": "http://articulo.mercadolibre.com.co/MCO-438399752-portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-_JM","title": "Ver Producto"}
+        #Peticion GET
+        uri = "https://api.mercadolibre.com/sites/MCO/search?q=celular%20lenovo&price=200000-500000&limit=9"
+        try:
+            uResponse = requests.get(uri)
+        except requests.ConnectionError:
+           return "Connection Error"
+        Jresponse = uResponse.text
+        dataR = json.loads(Jresponse)
+
+        for x in range(0, 9):
+
+            #recorrer el Json obtenido en el GET
+            #displayName = dataR['results'][x]['title']
+            #price = str(dataR['results'][x]['price'])
+            #image = str(dataR['results'][x]['thumbnail'])
+            #link = str(dataR['results'][x]['permalink'])
+
+            button['boton1'] = {"type": "web_url","url": dataR['results'][x]['permalink'],"title": "Ver Producto"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
             buttons= [button['boton1'], button['boton2']]
-            card[x] = {"title": displayName, "subtitle": "2.459.900", "image_url": "https://http2.mlstatic.com/portatil-lenovo-ideapad-510-core-i7-4gb-1tb-video-2gb-w10-D_NQ_NP_395915-MCO25330287897_022017-O.webp", "buttons": buttons}
+            card[x] = {"title": dataR['results'][x]['title'], "subtitle": dataR['results'][x]['price'], "image_url": dataR['results'][x]['thumbnail'], "buttons": buttons}
             #elements = [card['carta1']]
             elements.append(card[x])
         payload = {"template_type": "generic", "elements" : elements}
@@ -99,46 +102,6 @@ def makeWebhookResult(req):
         facebook["attachment"] = attachment
         data["facebook"] = facebook
         end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
-        #return end
-
-        # return {"data": {
-        #     "facebook": {
-        #     "attachment": {
-        #     "type": "template",
-        #     "payload": {
-        #     "template_type": "button",
-        #     "text": "Are you looking for something to watch, or do you want to see more options? Type or tap below.",
-        #     "buttons": [
-        #     {
-        #     "type": "postback",
-        #     "title": "On Now",
-        #     "payload": "On Now"
-        #     },
-        #     {
-        #     "type": "postback",
-        #     "title": "On Later",
-        #     "payload": "On Later"
-        #     },
-        #     {
-        #     "type": "postback",
-        #     "title": "More Options",
-        #     "payload": "More Options"
-        #     }
-        #     ]
-        #     }
-        #     }
-        #     }}}
-        # button['boton1'] = {"type": "postback", "title": "portatiles", "payload": "portatiles"}
-        # button['boton2'] = {"type": "postback", "title": "celulares", "payload": "celulares" }
-        # button['boton3'] = {"type": "postback", "title": "camaras", "payload": "camaras" }
-        # buttons= [button['boton1'], button['boton2'], button['boton3']]
-        # #card['carta1'] = {"title": "Cual producto quiere?", "buttons": buttons}
-        # #elements = [card['carta1']]
-        # payload = {"template_type": "button", "text": "Are you looking for.", "buttons": buttons}
-        # attachment = {"type" : "template", "payload" : payload}
-        # facebook["attachment"] = attachment
-        # data["facebook"] = facebook
-        # end = {"data" : data}
 
     return end
 
@@ -148,42 +111,3 @@ if __name__ == '__main__':
     print "Starting app on port %d" % port
 
     app.run(debug=True, port=port, host='0.0.0.0')
-
-
-
-
-        #speech = "The cost of shipping to " #+ productos + " is http://img.bbystatic.com/BestBuy_US/store/ee/2017/com/pr/SOL-11169-LenovoUpdate/lenovo_section4-img.png" #+ str(cost[zone]) + " euros."
-        # return {
-        #     #"speech": speech,
-        #     #"displayText": speech,
-        #     "data": {
-        #         "facebook":{
-    	# 	  "attachment": {
-    	# 	    "type": "template",
-    	# 	    "payload": {
-    	# 	      "template_type": "generic",
-    	# 	      "elements": [
-    	# 		{
-    	# 		  "title": "Rainbow Six Siege",
-    	# 		  "subtitle": "Blitz Guide",
-    	# 		  "image_url": "http://img.youtube.com/vi/36q5NnL3uSM/0.jpg",
-    	# 		  "buttons": [
-    	# 		    {
-    	# 		      "type": "web_url",
-    	# 		      "url": "https://www.youtube.com/watch?v=36q5NnL3uSM",
-    	# 		      "title": "Watch video"
-    	# 		    },
-    	# 		    {
-    	# 		      "type": "postback",
-        #           		      "title": "Hola",
-        #           		      "payload": "Hola"
-    	# 		    }
-    	# 		  ]
-    	# 		}]
-    	# 	    }
-    	# 	  }
-        #        }
-        #     },
-        #     # "contextOut": [],
-        #     "source": "apiai-onlinestore-shipping"
-        # }
