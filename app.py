@@ -81,7 +81,7 @@ def makeWebhookResult(req):
         elif gama == "alta":
             priceRange = "1500001-10500000"
 
-        #Peticion GET
+        #Peticion GET para la lista de articulos
         uri = "https://api.mercadolibre.com/sites/MCO/search?q=" + productos + " " + marca + "&price=" + priceRange + "&limit=9"
         try:
             uResponse = requests.get(uri)
@@ -92,10 +92,21 @@ def makeWebhookResult(req):
 
         for x in range(0, 9):
 
+            #Peticion Get para un articulo en especifico
+            item = dataR['results'][x]['id']
+            uri2 = "https://api.mercadolibre.com/items/" + item
+            try:
+                uResponse = requests.get(uri2)
+            except requests.ConnectionError:
+               return "Connection Error"
+            Jresponse = uResponse.text
+            dataR2 = json.loads(Jresponse)
+            image = dataR2['pictures'][0]['url']
+
             button['boton1'] = {"type": "web_url","url": dataR['results'][x]['permalink'],"title": "Ver Producto"}
             button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
             buttons= [button['boton1'], button['boton2']]
-            card[x] = {"title": dataR['results'][x]['title'], "subtitle": dataR['results'][x]['price'], "image_url": dataR['results'][x]['thumbnail'], "buttons": buttons}
+            card[x] = {"title": dataR['results'][x]['title'], "subtitle": dataR['results'][x]['price'], "image_url": image, "buttons": buttons}
             #elements = [card['carta1']]
             elements.append(card[x])
         payload = {"template_type": "generic", "elements" : elements}
