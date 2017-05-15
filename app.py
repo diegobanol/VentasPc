@@ -106,7 +106,7 @@ def webhook():
     print("Request:")
     print(json.dumps(req, indent=4))
 
-    res = makeWebhookResult(req){"web_url", dataR['results'][x]['permalink'], "Ver producto"}
+    res = makeWebhookResult(req)
 
     res = json.dumps(res, indent=4)
     print(res)
