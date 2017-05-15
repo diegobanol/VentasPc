@@ -13,6 +13,72 @@ from flask import make_response
 # Flask app should start in global layout
 app = Flask(__name__)
 
+class Response:
+
+    @classmethod
+    def doinGetToML(self, uri):
+        #DoinGet for the list of objects
+        collection=[]
+        #uri = "https://api.mercadolibre.com/sites/MCO/search?q=portatil%20asus&price=500000-1000000&limit=9"
+        try:
+            uResponse = requests.get(uri)
+        except requests.ConnectionError:
+           return "Connection Errorr"
+        Jresponse = uResponse.text
+        dataR = json.loads(Jresponse)
+
+        for x in range(0, len(dataR["results"])):
+            data = {}
+            button={}
+            #DoingGet for an object
+            item = dataR['results'][0]['id']
+            uri2 = "https://api.mercadolibre.com/items/" + item
+            try:
+                uResponse = requests.get(uri2)
+            except requests.ConnectionError:
+               return "Connection Error"
+            Jresponse = uResponse.text
+            dataR2 = json.loads(Jresponse)
+            data["image"] = dataR2['pictures'][0]['url']
+            data["title"]=dataR["results"][x]["title"]
+            data["subtitle"]=dataR['results'][x]['price']
+            button['boton1']={"type": "web_url","url": dataR['results'][x]['permalink'],"title": "Ver producto"}
+            button['boton2']={"type": "web_url","url": dataR['results'][x]['permalink'],"title": "Ver producto"}
+            data["buttons"]=[button['boton1'],button['boton2']]
+            #print dataR2['pictures'][0]['url']
+            collection.append(data)
+
+        return collection
+
+class Card:
+
+    def __init__(self, collection):
+        self.collection = collection
+
+    def createCards(self):
+        data = {}
+        button = {}
+        facebook ={}
+        card = {}
+        payload = {}
+        attachment = {}
+        end = {}
+        elements =[]
+        for x in range(0, len(self.collection)):
+            #button['boton1'] = {"type": "web_url","url": "https://www.google.com.co/","title": self.characteristics["option1"][1]}
+            #button['boton2'] = {"type": "postback", "title": self.characteristics["option2"][1], "payload": self.characteristics["option1"][1] }
+            #button['boton3'] = {"type": "postback", "title": self.characteristics["option3"][1], "payload": self.characteristics["option1"][1] }
+            #buttons= [button['boton1'], button['boton2'], button['boton3']]
+            card[x] = {"title": self.collection[x]["title"], "subtitle": self.collection[x]["subtitle"], "image_url": self.collection[x]["image"], "buttons": self.collection[x]["buttons"]}
+            #elements = [card['carta1']]
+            elements.append(card[x])
+        payload = {"template_type": "generic", "elements" : elements}
+        attachment = {"type" : "template", "payload" : payload}
+        facebook["attachment"] = attachment
+        data["facebook"] = facebook
+        end = {"data" : data, "source" : "apiai-onlinestore-shipping"}
+        return end
+
 def createButtons(speech, text, option1, option2, option3 ):
     data = {}
     button = {}
@@ -31,7 +97,6 @@ def createButtons(speech, text, option1, option2, option3 ):
     facebook["attachment"] = attachment
     data["facebook"] = facebook
     end = {"speech": speech, "data" : data}
-
     return end
 
 @app.route('/webhook', methods=['POST'])
@@ -41,7 +106,7 @@ def webhook():
     print("Request:")
     print(json.dumps(req, indent=4))
 
-    res = makeWebhookResult(req)
+    res = makeWebhookResult(req){"web_url", dataR['results'][x]['permalink'], "Ver producto"}
 
     res = json.dumps(res, indent=4)
     print(res)
@@ -83,38 +148,10 @@ def makeWebhookResult(req):
 
         #Peticion GET para la lista de articulos
         uri = "https://api.mercadolibre.com/sites/MCO/search?q=" + productos + " " + marca + "&price=" + priceRange + "&limit=9"
-        try:
-            uResponse = requests.get(uri)
-        except requests.ConnectionError:
-           return "Connection Error"
-        Jresponse = uResponse.text
-        dataR = json.loads(Jresponse)
-
-        for x in range(0, 9):
-
-            #Peticion Get para un articulo en especifico
-            item = dataR['results'][x]['id']
-            uri2 = "https://api.mercadolibre.com/items/" + item
-            try:
-                uResponse = requests.get(uri2)
-            except requests.ConnectionError:
-               return "Connection Error"
-            Jresponse = uResponse.text
-            dataR2 = json.loads(Jresponse)
-            image = dataR2['pictures'][0]['url']
-
-            button['boton1'] = {"type": "web_url","url": dataR['results'][x]['permalink'],"title": "Ver Producto"}
-            button['boton2'] = {"type": "postback", "title": "Hola", "payload": "Hola" }
-            buttons= [button['boton1'], button['boton2']]
-            card[x] = {"title": dataR['results'][x]['title'], "subtitle": dataR['results'][x]['price'], "image_url": image, "buttons": buttons}
-            #elements = [card['carta1']]
-            elements.append(card[x])
-        payload = {"template_type": "generic", "elements" : elements}
-        attachment = {"type" : "template", "payload" : payload}
-        facebook["attachment"] = attachment
-        data["facebook"] = facebook
-        speech = "Su " + productos + " " + marca + " de gama " + gama + " es: " + dataR['results'][x]['permalink']
-        end = {"speech": speech, "data" : data, "source" : "apiai-onlinestore-shipping"}
+        resp= Response
+        salida = resp.doinGetToML(uri)
+        c1 = Card(salida)
+        end = c1.createCards()
 
     return end
 
