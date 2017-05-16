@@ -16,6 +16,10 @@ app = Flask(__name__)
 class Response:
 
     @classmethod
+    def createButtons(self):
+
+
+    @classmethod
     def doinGetToML(self, uri):
         #DoinGet for the list of objects
         collection=[]
@@ -31,7 +35,7 @@ class Response:
             data = {}
             button={}
             #DoingGet for an object
-            item = dataR['results'][0]['id']
+            item = dataR['results'][x]['id']
             uri2 = "https://api.mercadolibre.com/items/" + item
             try:
                 uResponse = requests.get(uri2)
@@ -55,6 +59,9 @@ class Card:
     def __init__(self, collection):
         self.collection = collection
 
+    def conditions(self):
+        if
+
     def createCards(self):
         data = {}
         button = {}
@@ -65,12 +72,7 @@ class Card:
         end = {}
         elements =[]
         for x in range(0, len(self.collection)):
-            #button['boton1'] = {"type": "web_url","url": "https://www.google.com.co/","title": self.characteristics["option1"][1]}
-            #button['boton2'] = {"type": "postback", "title": self.characteristics["option2"][1], "payload": self.characteristics["option1"][1] }
-            #button['boton3'] = {"type": "postback", "title": self.characteristics["option3"][1], "payload": self.characteristics["option1"][1] }
-            #buttons= [button['boton1'], button['boton2'], button['boton3']]
-            card[x] = {"title": self.collection[x]["title"], "subtitle": self.collection[x]["subtitle"], "image_url": self.collection[x]["image"], "buttons": self.collection[x]["buttons"]}
-            #elements = [card['carta1']]
+            card[x] = {"title": self.collection[x]["title"], "subtitle": self.collection[x]["subtitle"], "image_url": "", "buttons": self.collection[x]["buttons"]}
             elements.append(card[x])
         payload = {"template_type": "generic", "elements" : elements}
         attachment = {"type" : "template", "payload" : payload}
