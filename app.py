@@ -15,9 +15,6 @@ app = Flask(__name__)
 
 class Response:
 
-    @classmethod
-    def createButtons(self):
-
 
     @classmethod
     def doinGetToML(self, uri):
@@ -59,8 +56,6 @@ class Card:
     def __init__(self, collection):
         self.collection = collection
 
-    def conditions(self):
-        if
 
     def createCards(self):
         data = {}
